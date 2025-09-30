@@ -1,0 +1,159 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usetheme{Madrid}
+\usecolortheme{default}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{txfonts}
+\usepackage{tk\input{b}z-euclide}
+\usepackage{listings}
+\usepackage{adjustbox}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{gvv}
+\usepackage{lmodern}
+\usepackage{circuitikz}
+\usepackage{tikz}
+\usepackage{graphicx}
+
+\setbeamertemplate{page number in head/foot}[totalframenumber]
+
+\usepackage{tcolorbox}
+\tcbuselibrary{minted,breakable,xparse,skins}
+
+
+
+\definecolor{bg}{gray}{0.95}
+\DeclareTCBListing{mintedbox}{O{}m!O{}}{%
+  breakable=true,
+  listing engine=minted,
+  listing only,
+  minted language=#2,
+  minted style=default,
+  minted options={%
+    linenos,
+    gobble=0,
+    breaklines=true,
+    breakafter=,,
+    fontsize=\small,
+    numbersep=8pt,
+    #1},
+  boxsep=0pt,
+  left skip=0pt,
+  right skip=0pt,
+  left=25pt,
+  right=0pt,
+  top=3pt,
+  bottom=3pt,
+  arc=5pt,
+  leftrule=0pt,
+  rightrule=0pt,
+  bottomrule=2pt,
+  toprule=2pt,
+  colback=bg,
+  colframe=orange!70,
+  enhanced,
+  overlay={%
+    \begin{tcbclipinterior}
+    \fill[orange!20!white] (frame.south west) rectangle ([xshift=20pt]frame.north west);
+    \end{tcbclipinterior}},
+  #3,
+}
+\lstset{
+    language=C,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    stringstyle=\color{orange},
+    commentstyle=\color{green!60!black},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    breaklines=true,
+    showstringspaces=false,
+}
+
+% \numberwithin{equation}{section}
+
+\title{Matgeo-q.4.13.105}
+\author{AI25BTECH11036-SNEHAMRUDULA}
+
+\date{\today} 
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section*{Outline}
+\begin{frame}{question}
+
+Let 
+\[
+\overrightarrow{OP}=\frac{\alpha-1}{\alpha}\hat{i}+\hat{j}+\hat{k}, \quad
+\overrightarrow{OQ}=\hat{i}+\frac{\beta-1}{\beta}\hat{j}+\hat{k}, \quad
+\overrightarrow{OR}=\hat{i}+\hat{j}+\frac{1}{2}\hat{k}
+\]
+be three vectors, where $\alpha,\beta \in \mathbb{R}-\{0\}$ and $O$ denotes the origin.  
+If 
+\[
+\left(\overrightarrow{OP}\times\overrightarrow{OQ}\right)\cdot\overrightarrow{OR}=0
+\]
+and the point $(\alpha,\beta,2)$ lies on the plane
+\[
+3x+3y-z+l=0,
+\]
+then the value of $l$ is \underline{\hspace{2cm}}.
+
+\end{frame}
+\begin{frame}{solution}
+
+Given
+\begin{align}
+\vec{OP} &= \myvec{\dfrac{\alpha-1}{\alpha} \\[2pt] 1 \\[2pt] 1},\quad
+\vec{OQ} = \myvec{1 \\[2pt] \dfrac{\beta-1}{\beta} \\[2pt] 1},\quad
+\vec{OR} = \myvec{1 \\[2pt] 1 \\[2pt] \tfrac{1}{2}}.
+\label{eq:giv}
+\end{align}
+
+From \textit{gvvbook} (coplanarity/zero volume criterion), three vectors are coplanar
+iff the volume of the parallelepiped they form is zero, i.e.,
+\begin{align}
+\det\brak{\vec{OP}\ \vec{OQ}\ \vec{OR}}=0. \label{eq:cop}
+\end{align}
+Using \eqref{eq:giv},
+\begin{align}
+\det\myvec{
+\dfrac{\alpha-1}{\alpha} & 1 & 1\\[4pt]
+1 & \dfrac{\beta-1}{\beta} & 1\\[4pt]
+1 & 1 & \tfrac{1}{2}
+}
+= \frac{\alpha+\beta+1}{2\alpha\beta}
+= 0
+\;\Longrightarrow\;
+\alpha+\beta+1=0.
+\label{eq:alphabeta}
+\end{align}
+\end{frame}
+Let the plane be represented in normal form (cf. \textit{gvvbook}, 
+line/plane normal form)
+\begin{align}
+\vec{n}^{\top}\vec{x} + l = 0, \qquad
+\vec{n}=\myvec{3\\[2pt]3\\[2pt]-1}. \label{eq:plane}
+\end{align}
+Since the point $\myvec{\alpha\\ \beta\\ 2}$ lies on the plane,
+\begin{align}
+\vec{n}^{\top}\myvec{\alpha\\ \beta\\ 2} + l &= 0
+\ \Longrightarrow\
+l = -\brak{3\alpha + 3\beta - 2}. \label{eq:lraw}
+\end{align}
+Using \eqref{eq:alphabeta}, $\ \beta= -1-\alpha$, hence
+\begin{align}
+l = -\brak{3\alpha + 3(-1-\alpha) - 2}
+  = -\brak{-5}
+  = \boxed{5}. \label{eq:ans}
+\end{align}
+    \begin{frame}{Graphical Representation}
+   \begin{figure}[h!]
+\centering
+\includegraphics[width=0.6\linewidth]{fig4.13.105.png}
+\end{figure}
+\end{frame}
+\end{document}
