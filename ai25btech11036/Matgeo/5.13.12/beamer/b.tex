@@ -4,7 +4,7 @@
 \usecolortheme{default}
 \usepackage{amsmath,amssymb,amsfonts,amsthm}
 \usepackage{txfonts}
-\usepackage{tk\input{b}z-euclide}
+\usepackage{tkz-euclide}
 \usepackage{listings}
 \usepackage{adjustbox}
 \usepackage{array}
@@ -19,8 +19,6 @@
 
 \usepackage{tcolorbox}
 \tcbuselibrary{minted,breakable,xparse,skins}
-
-
 
 \definecolor{bg}{gray}{0.95}
 \DeclareTCBListing{mintedbox}{O{}m!O{}}{%
@@ -70,83 +68,141 @@
     showstringspaces=false,
 }
 
-%\numberwithin{equation}{section}
-
-\title{Matgeo-q.5.13.12}
+\title{Matgeo-5.13.12}
 \author{AI25BTECH11036-SNEHAMRUDULA}
-
 \date{\today} 
+
 \begin{document}
+
 \begin{frame}
 \titlepage
 \end{frame}
 
 \section*{Outline}
 \begin{frame}{question}
-Find the set of all values of $\lambda$ for which the system
+   The set of all values of $\lambda$ for which the system of linear equations
 \[
 \begin{aligned}
-2x_1-2x_2+x_3 &= \lambda x_1,\\
-2x_1-3x_2+2x_3 &= \lambda x_2,\\
-- x_1+2x_2 &= \lambda x_3
+2x_{1} - 2x_{2} + x_{3} &= \lambda x_{1}, \\[6pt]
+2x_{1} - 3x_{2} + 2x_{3} &= \lambda x_{2}, \\[6pt]
+- x_{1} + 2x_{2} &= \lambda x_{3},
 \end{aligned}
 \]
-has a non-trivial solution. Which of the following is true?
- \item  \textbf{A)}contains two elements
-\item   \textbf{B)} contains more than two elements
- \item  \textbf{C)}is an empty set
-\item   \textbf{D)}is a singlet
-  \end{frame}
-\begin{frame}{solution}
-Bring all terms to one side:
+has a non-trivial solution
+\begin{enumerate}
+  \item[(a)] contains two elements
+  \item[(b)] contains more than two elements
+  \item[(c)] is an empty set
+  \item[(d)] is a singleton
+  \end{enumerate}
+\end{frame}
 
+\begin{frame}[allowframebreaks]{solution}
 \[
-\begin{aligned}
-(2 - \lambda)x_1 - 2x_2 + x_3 &= 0 \\
-2x_1 + (-3 - \lambda)x_2 + 2x_3 &= 0 \\
--x_1 + 2x_2 - \lambda x_3 &= 0
-\end{aligned}
+A = \begin{pmatrix}
+2 & -2 & 1 \\ 
+2 & -3 & 2 \\ 
+-1 & 2 & 0
+\end{pmatrix}
 \]
 
-
 \[
-\myvec{
-2 - \lambda & -2 & 1 \\
-2 & -3 - \lambda & 2 \\
+\det(A-\lambda I) 
+= \begin{vmatrix}
+2-\lambda & -2 & 1 \\ 
+2 & -3-\lambda & 2 \\ 
 -1 & 2 & -\lambda
-}
-\vec{x}
-= \vec{0}
-\quad \text{where} \quad
-\vec{x} = \myvec{x_1 \\ x_2 \\ x_3},\quad \vec{0} = \myvec{0 \\ 0 \\ 0}
+\end{vmatrix}
 \]
-\[
-\text{rank}(\text{Coefficient Matrix}) < 3
-\]
-\[
-\text{rank}\left(
-\myvec{
-2 - \lambda & -2 & 1 \\
-2 & -3 - \lambda & 2 \\
--1 & 2 & -\lambda
-}
-\right) = 2
-\]
-So, the system has a non-trivial solution for exactly two values of \( \lambda \).
 
 \[
-\boxed{\text{Correct answer: (a) contains two elements}}
+= -\lambda^{3} - \lambda^{2} + 5\lambda - 3
+\]
+
+\[
+\lambda^{3} + \lambda^{2} - 5\lambda + 3 = 0
+\]
+
+\[
+(\lambda-1)^{2}(\lambda+3)=0
+\]
+
+\[
+\lambda_1 = -3, \quad \lambda_2 = 1, \quad \lambda_3 = 1
+\]
+
+\[
+(A+3I)v=0 \quad \Rightarrow \quad 
+\begin{pmatrix}
+5 & -2 & 1\\
+2 & 0 & 2\\
+-1 & 2 & 3
+\end{pmatrix}v=0
+\]
+
+\[
+v_1 = \begin{pmatrix}-1 \\ -2 \\ 1\end{pmatrix}
+\]
+
+\[
+(A-I)v=0 \quad \Rightarrow \quad
+\begin{pmatrix}
+1 & -2 & 1\\
+2 & -4 & 2\\
+-1 & 2 & -1
+\end{pmatrix}v=0
+\]
+
+\[
+v_2 = \begin{pmatrix}2 \\ 1 \\ 0\end{pmatrix}, \quad
+v_3 = \begin{pmatrix}-1 \\ 0 \\ 1\end{pmatrix}
+\]
+
+\[
+P = \begin{pmatrix}
+-1 & 2 & -1 \\ 
+-2 & 1 & 0 \\ 
+1 & 0 & 1
+\end{pmatrix}, \quad
+D = \begin{pmatrix}
+-3 & 0 & 0 \\ 
+0 & 1 & 0 \\ 
+0 & 0 & 1
+\end{pmatrix}
+\]
+
+\[
+P^{-1} = \begin{pmatrix}
+\frac{1}{4} & -\frac{1}{2} & \frac{1}{4} \\[6pt]
+\frac{1}{2} & 0 & \frac{1}{2} \\[6pt]
+-\frac{1}{4} & \frac{1}{2} & \frac{3}{4}
+\end{pmatrix}
+\]
+
+\[
+A = P D P^{-1}
+\]
+
+\[
+\{\lambda : \det(A-\lambda I)=0\} = \{-3,1\}
+\]
+
+\[
+\text{(A)Contains two elements.}
 \]
 \end{frame}
-    \begin{frame}{Graphical Representation}
+
+\begin{frame}{Graphical Representation}
    \begin{figure}[h!]
 \centering
 \includegraphics[width=0.6\linewidth]{5.13.12fig.png}
 \end{figure}
 \end{frame}
+\begin{frame}{Graphical Representation}
    \begin{figure}[h!]
 \centering
 \includegraphics[width=0.6\linewidth]{5.13.12fig(1).png}
 \end{figure}
 \end{frame}
+
 \end{document}
