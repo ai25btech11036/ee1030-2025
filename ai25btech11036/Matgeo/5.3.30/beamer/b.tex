@@ -1,0 +1,144 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usetheme{Madrid}
+\usecolortheme{default}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{txfonts}
+\usepackage{tk\input{b}z-euclide}
+\usepackage{listings}
+\usepackage{adjustbox}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{gvv}
+\usepackage{lmodern}
+\usepackage{circuitikz}
+\usepackage{tikz}
+\usepackage{graphicx}
+
+\setbeamertemplate{page number in head/foot}[totalframenumber]
+
+\usepackage{tcolorbox}
+\tcbuselibrary{minted,breakable,xparse,skins}
+
+
+
+\definecolor{bg}{gray}{0.95}
+\DeclareTCBListing{mintedbox}{O{}m!O{}}{%
+  breakable=true,
+  listing engine=minted,
+  listing only,
+  minted language=#2,
+  minted style=default,
+  minted options={%
+    linenos,
+    gobble=0,
+    breaklines=true,
+    breakafter=,,
+    fontsize=\small,
+    numbersep=8pt,
+    #1},
+  boxsep=0pt,
+  left skip=0pt,
+  right skip=0pt,
+  left=25pt,
+  right=0pt,
+  top=3pt,
+  bottom=3pt,
+  arc=5pt,
+  leftrule=0pt,
+  rightrule=0pt,
+  bottomrule=2pt,
+  toprule=2pt,
+  colback=bg,
+  colframe=orange!70,
+  enhanced,
+  overlay={%
+    \begin{tcbclipinterior}
+    \fill[orange!20!white] (frame.south west) rectangle ([xshift=20pt]frame.north west);
+    \end{tcbclipinterior}},
+  #3,
+}
+\lstset{
+    language=C,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    stringstyle=\color{orange},
+    commentstyle=\color{green!60!black},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    breaklines=true,
+    showstringspaces=false,
+}
+
+\numberwithin{equation}{section}
+
+\title{Matgeo-q.5.3.30}
+\author{AI25BTECH11036-SNEHAMRUDULA}
+
+\date{\today} 
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section*{Outline}
+\begin{frame}{question}
+\noindent\textbf{Question.}\;
+Solve the system of linear equations (using the matrix method)
+\[
+7u+2v=11,\qquad 4u-v=2 .
+\]
+
+\end{frame}
+\begin{frame}{solution}
+\noindent\textbf{Solution.}
+\begingroup
+\setcounter{equation}{0}
+\renewcommand{\theequation}{\arabic{equation}}
+\begin{equation}
+\myvec{7 & 2\\[2pt] 4 & -1}\,\myvec{u\\ v}=\myvec{11\\ 2},
+\qquad
+\vec A=\myvec{7 & 2\\ 4 & -1},\;
+\vec p=\myvec{u\\ v},\;
+\vec b=\myvec{11\\ 2}. 
+\end{equation}
+
+Since
+\begin{equation}
+\det(\vec A)=-15\neq 0,
+\end{equation}
+
+the unique solution is \(\vec p=\vec A^{-1}\vec b\) with
+\begin{equation}
+\vec A^{-1}=\frac{1}{\det(\vec A)}
+\myvec{-1 & -2\\[2pt] -4 & 7}
+=\frac{-1}{15}\myvec{-1 & -2\\ -4 & 7}.
+\end{equation}
+
+Hence
+\begin{equation}
+\vec p
+= \frac{-1}{15}\myvec{-1 & -2\\ -4 & 7}\myvec{11\\ 2}
+= \frac{-1}{15}\myvec{-15\\ -30}
+= \myvec{1\\ 2}.
+\end{equation}
+Therefore,
+\begin{equation}
+u=1,\qquad v=2.
+\end{equation}
+\endgroup
+and the number of unknowns is also \(3\), the system has a \textbf{unique solution}.  
+
+\[
+\therefore \quad \text{There exists a unique vector } n 
+\text{ such that } n^T x = 1 \text{ is the required plane.}
+\]
+\end{frame}
+    \begin{frame}{Graphical Representation}
+   \begin{figure}[h!]
+\centering
+\includegraphics[width=0.6\linewidth]{fig5.3.30.png}
+\end{figure}
+\end{frame}
+\end{document}
